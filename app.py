@@ -23,10 +23,10 @@ def send_email(subject, body):
         server.send_message(msg)
 
 def main():
-    df = pd.read_csv("words.csv")
+    df = pd.read_csv("convertcsv.csv")
 
     start_date = datetime.strptime(
-        os.environ["START_DATE"], "%Y-%m-%d"
+        "2025-12-25", "%Y-%m-%d"
     ).date()
 
     today = date.today()
