@@ -36,8 +36,11 @@ def main():
 
     today = date.today()
     day_number = (today - start_date).days + 1
+    day_number = max(1, day_number)  # Ensure non-negative
+    len_df = len(df)
+    day_number = ((day_number - 1) % len_df) + 1
 
-    print(f"Today: {today}, Start date: {start_date}, Day number: {day_number}")
+    print(f"Today: {today}, Start date: {start_date}, Raw day number: {(today - start_date).days + 1}, Final day number: {day_number}")
 
     row = df[df["day"] == day_number]
 
