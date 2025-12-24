@@ -30,9 +30,8 @@ def main():
     print(f"CSV loaded: {df.shape[0]} rows, {df.shape[1]} columns")
     print(f"First row: {df.iloc[0].to_dict()}")
 
-    start_date = datetime.strptime(
-        "2025-12-25", "%Y-%m-%d"
-    ).date()
+    start_date_str = os.environ.get("START_DATE", "2025-12-25")
+    start_date = datetime.strptime(start_date_str, "%Y-%m-%d").date()
 
     today = date.today()
     day_number = (today - start_date).days + 1
