@@ -27,6 +27,8 @@ def send_email(subject, body):
 
 def main():
     df = pd.read_csv("words.csv")
+    print(f"CSV loaded: {df.shape[0]} rows, {df.shape[1]} columns")
+    print(f"First row: {df.iloc[0].to_dict()}")
 
     start_date = datetime.strptime(
         "2025-12-25", "%Y-%m-%d"
@@ -34,6 +36,8 @@ def main():
 
     today = date.today()
     day_number = (today - start_date).days + 1
+
+    print(f"Today: {today}, Start date: {start_date}, Day number: {day_number}")
 
     row = df[df["day"] == day_number]
 
