@@ -4,6 +4,9 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import date, datetime
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def send_email(subject, body):
     email = os.environ["EMAIL_ADDRESS"]
