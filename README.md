@@ -71,8 +71,3 @@ Contributions, issues and feature requests are welcome. Please open an issue fir
 
 ## License
 Add your license here (e.g., MIT). If you don't want a license, note that the project is proprietary.
-
-What I changed:
-- Expanded the one-line README into a full, practical README with setup, configuration, usage, and deployment guidance.
-- Added environment variable suggestions and examples for scheduling and Docker.
-- Left placeholders (WORD_SOURCE, exact run command, license) for repository-specific details you may want to fill in.
