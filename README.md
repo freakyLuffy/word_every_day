@@ -68,6 +68,3 @@ Add a Dockerfile or use an existing one. Example run:
 
 ## Contributing
 Contributions, issues and feature requests are welcome. Please open an issue first to discuss major changes.
-
-## License
-Add your license here (e.g., MIT). If you don't want a license, note that the project is proprietary.
