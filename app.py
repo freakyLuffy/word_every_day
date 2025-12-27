@@ -14,7 +14,7 @@ def send_email(subject, body, recipients):
 
     msg = MIMEMultipart()
     msg["From"] = email
-    msg["To"] = email  # Set To to sender for BCC
+    # No "To" header for BCC privacy
     msg["Subject"] = subject
 
     msg.attach(MIMEText(body, "plain"))
