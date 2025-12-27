@@ -8,14 +8,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def send_email(subject, body):
+def send_email(subject, body, recipients):
     email = os.environ["EMAIL_ADDRESS"]
     password = os.environ["EMAIL_PASSWORD"]
-    to_email = os.environ["TO_EMAIL"]
 
     msg = MIMEMultipart()
     msg["From"] = email
-    msg["To"] = to_email
+    msg["To"] = email  # Set To to sender for BCC
+    msg["Bcc"] = ", ".join(recipients)
     msg["Subject"] = subject
 
     msg.attach(MIMEText(body, "plain"))
@@ -23,7 +23,7 @@ def send_email(subject, body):
     with smtplib.SMTP("smtp.gmail.com", 587) as server:
         server.starttls()
         server.login(email, password)
-        server.send_message(msg)
+        server.sendmail(email, recipients, msg.as_string())
 
 def main():
     df = pd.read_csv("words.csv")
@@ -63,7 +63,15 @@ Example:
 Try using this word today 🙂
 """
 
-    send_email(subject, body)
+    # Read recipients from emails.txt
+    with open("emails.txt", "r") as f:
+        recipients = [line.strip() for line in f if line.strip()]
+
+    if not recipients:
+        print("No recipients found in emails.txt")
+        return
+
+    send_email(subject, body, recipients)
     print("Email sent successfully")
 
 if __name__ == "__main__":
